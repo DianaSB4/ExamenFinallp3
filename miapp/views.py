@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.db.models import Q
 from django.contrib import messages
 from miapp.models import course
-
+from miapp.models import career
 
 # Create your views here.
 
@@ -98,3 +98,64 @@ def save_course(request):
 
 def crear_course(request):
     return render(request, 'crear_curso.html')
+
+
+
+def crear_career(request, name, shortname,image, state):
+    career = career(
+        name = name,
+        shortname = shortname,
+        image = image,
+        state = state
+    )
+    career.save()
+    return HttpResponse(f"Carrera Creado: {career.name} - {career.shortname}- {career.image} - {career.state}")
+
+def editar_career(request, id):
+    career = career.objects.get(pk=id)
+
+    career.name = "Enseñanza onLine en la UNTELS"
+    career.shortname = "Aula Virtual, Google Meet, Portal Académico, Google Classroom..."
+    career.state = False
+
+    career.save()
+    return HttpResponse(f"Carrera Editado: {career.name} - {career.shortname}- {career.image} - {career.state}")
+
+def listar_career(request):
+    career = career.objects.all()
+    """
+    career = career.objects.filter(
+        Q(titulo__contains="Py") |
+        Q(titulo__contains="Hab")
+    )
+    """
+    return render(request, 'listar_carrera.html',{
+        'career': career,
+        'titulo': 'Listado de Carreras'
+    })
+
+def eliminar_career(request, id):
+    career = career.objects.get(pk=id)
+    career.delete()
+    return redirect('listar_carrera')
+
+def save_career(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        shortname = request.POST['shotname']
+        image = request.POST['image']
+        state = request.POST['state']
+
+        career = career(
+            name = name,
+            shortname = shortname,
+            image = image,
+            state = state
+        )
+        career.save()
+        return HttpResponse(f"Carrera Creado: {career.name} - {career.shortname}- {career.image} - {career.state}")
+    else:
+        return HttpResponse("<h2> No se ha podido registrar la carrera </h2>")
+
+def create_career(request):
+    return render(request, 'create_carrera.html')

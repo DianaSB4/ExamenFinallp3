@@ -1,9 +1,28 @@
 {% extends 'layout.html' %}
-{% block title %}
-    Crear Carrera
-{% endblock title %}
 
-{%  block content %}
-    <h1>Crear Carrera</h1>
-    
-{% endblock content %}
+
+{% block title %}
+    Formulario en DJango
+{% endblock %}
+{% block content %}
+    <H1 class="title"> 
+        Formulario en DJango
+    </H1>
+    <form action="{% url 'save_carrera' %}" method="POST">
+        {% csrf_token %}
+        <label for="name"> Name </label>
+        <input type="text" name="name" />
+
+        <label for="shortname"> shortname </label>
+        <input type="text" name="shortname" />
+
+        <label for="state"> Estado </label>
+        <select name="state">
+            <option value="1">A</option>
+            <option value="0">D</option>
+        </select>
+
+        <input type="submit" value="Agregar" />
+
+    </form>
+{% endblock %}

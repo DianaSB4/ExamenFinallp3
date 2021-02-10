@@ -22,9 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name = "index"),
     path('inicio/',views.index, name = "inicio"),
-    path('crear_curso',views.crear_curso, name="crear_curso"),
-    path('listar_curso',views.listar_curso, name="listar_curso"),
-    path('crear_carrera',views.crear_carrera, name="crear_carrera"),
+    path('crear_curso',views.crear_course, name="crear_curso"),
+    path('listar_curso',views.listar_course, name="listar_curso"),
+    path('crear_carrera',views.create_career, name="crear_carrera"),
     path('listar_carrera',views.listar_carrera, name="listar_carrera"),
     path('save_course/',views.save_course, name="save_course"),
+    path('save_career/',views.save_career, name="save_career"),
 ]   
