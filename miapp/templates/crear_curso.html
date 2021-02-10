@@ -6,4 +6,33 @@
 {%  block content %}
     <h1>Crear Curso</h1>
     
-{% endblock content %}
+
+    <H1 class="title"> 
+        Formulario en DJango
+    </H1>
+
+    <form action="{% url 'save_course' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="code"> Codigo </label>
+        <input type="text" name="code" />
+
+        <label for="name"> Nombre </label>
+        <input type="text" name="name" />
+
+        <label for="hour"> Hora </label>
+        <input type="text" name="code" /> 
+
+        <label for="credits"> Creditos </label>
+        <input type="text" name="credits" /> 
+
+        <label for="state"> Estado </label>
+        <select name="state">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+        </select>
+
+        <input type="submit" value="Agregar" />
+
+    </form>
+{% endblock %}

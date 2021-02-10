@@ -26,4 +26,5 @@ urlpatterns = [
     path('listar_curso',views.listar_curso, name="listar_curso"),
     path('crear_carrera',views.crear_carrera, name="crear_carrera"),
     path('listar_carrera',views.listar_carrera, name="listar_carrera"),
+    path('save_course/',views.save_course, name="save_course"),
 ]   
