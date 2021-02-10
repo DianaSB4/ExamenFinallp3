@@ -1,0 +1,47 @@
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+
+            {% endblock title %}
+            | Team Dinamita
+        </title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+    </head>
+    <body>
+        <nav> 
+            <ul class="menu"> 
+                <li class="logo"><a href="#">Proyecto Untels</a></li>
+                <li>
+                    <a href="{% url 'crear_curso' %}">Crear Curso</a>
+                </li>
+                <li>
+                    <a href="{% url 'crear_carrera' %}">Crear Carrera</a>
+                </li>
+                <li>
+                    <a href="{% url 'listar_carrera' %}">Listar Carrera</a>
+                </li>
+                <li>
+                    <a href="{% url 'listar_curso' %}">Listar Curso</a>
+                </li> 
+            </ul> 
+        </nav>
+
+
+        <div id="content">
+            <div class="box">                
+                {% block content %}
+                    <strong> 
+                       Contenido por defecto desde layout.html  
+                    </strong>                    
+                {% endblock content %}
+            </div>
+        </div>
+        <footer>
+            UNTELS - Lenguaje de Programación III &copy; Team Dinamita- {% now "d/m/y h:m:s" %}
+        </footer>
+    </body>
+</html>
